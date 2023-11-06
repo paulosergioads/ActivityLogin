@@ -60,6 +60,7 @@ public class Cadastro extends AppCompatActivity {
                         edtSenha2.getText().toString()
                 ));
 
+
                 if (vDao.cadastrar()){
                     Intent it = new Intent(Cadastro.this, MainActivityPrincipal.class);
                     startActivity(it);

@@ -53,5 +53,34 @@ public class UserDAO {
 
     }
 
+    public  boolean atualizar(){
+        SQLiteDatabase dbLite = this.db.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("nome", this.user.getName());
+        cv.put("senha", this.user.getPassword());
+        cv.put("email",this.user.getMail());
+
+        long ret = dbLite.update("user", cv,"email= ?", new String[]{this.user.getMail()});
+        if (ret > 0){
+
+            return  true;
+        }
+        return false;
+
+
+    }
+    public boolean delete(){
+
+        SQLiteDatabase dbLite = this.db.getWritableDatabase();
+        long ret = dbLite.delete("user","email = ?", new String[]{this.user.getMail()} );
+
+        if (ret > 0){
+            return true;
+        }
+        return false;
+    }
+
+
 
 }
